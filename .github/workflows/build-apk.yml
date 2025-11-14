@@ -1,0 +1,49 @@
+name: Build Android APK
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: kivy/buildozer:latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Install dependencies
+        run: |
+          apt-get update
+          apt-get install -y python3-pip git
+          pip install --upgrade pip
+      
+      - name: Build APK with Buildozer
+        run: |
+          cd $GITHUB_WORKSPACE
+          # Accept all licenses automatically
+          yes | BUILDOZER_ALLOW_ROOT=1 buildozer android debug
+        env:
+          BUILDOZER_ALLOW_ROOT: 1
+      
+      - name: Upload APK artifact
+        if: success()
+        uses: actions/upload-artifact@v3
+        with:
+          name: android-apk
+          path: bin/*.apk
+          retention-days: 30
+      
+      - name: Create Release
+        if: success()
+        uses: softprops/action-gh-release@v1
+        with:
+          files: bin/*.apk
+          tag_name: v${{ github.run_number }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
