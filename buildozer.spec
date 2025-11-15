@@ -1,26 +1,27 @@
 [app]
-title = AI Voice Chat
-package.name = aivoicechat
-package.domain = org.hallam
-icon.filename = %(source.dir)s/data/icon.png
-presplash.filename = %(source.dir)s/data/presplash.png
+title = AI Voice Chat [cite: 1]
+package.name = aivoicechat [cite: 1]
+package.domain = org.hallam [cite: 1]
+icon.filename = %(source.dir)s/data/icon.png [cite: 1]
+presplash.filename = %(source.dir)s/data/presplash.png [cite: 1]
 
-version = 0.1
-source.dir = .
-source.include_exts = py,png,jpg,kv,atlas,txt
+version = 0.1 [cite: 1]
+source.dir = . [cite: 1]
+source.include_exts = py,png,jpg,kv,atlas,txt [cite: 2]
 
-requirements = python3,kivy,cython
+# *** IMPORTANT CHANGE: ADDED 'llama-cpp-python' ***
+requirements = python3,kivy,cython,llama-cpp-python [cite: 2]
 
-orientation = portrait
+orientation = portrait [cite: 2]
 
-android.permissions = INTERNET
-android.api = 31
-android.minapi = 21
-android.ndk = 25b
-android.accept_sdk_license = True
-android.bootstrap = sdl2
-android.arch = arm64-v8a
+android.permissions = INTERNET [cite: 2]
+android.api = 31 [cite: 2]
+android.minapi = 21 [cite: 2]
+android.ndk = 25b [cite: 2]
+android.accept_sdk_license = True [cite: 2]
+android.bootstrap = sdl2 [cite: 2]
+android.arch = arm64-v8a [cite: 2]
 
 [buildozer]
-log_level = 2
-warn_on_root = 0
+log_level = 2 [cite: 2]
+warn_on_root = 0 [cite: 2]
