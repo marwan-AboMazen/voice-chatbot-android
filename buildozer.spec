@@ -14,7 +14,7 @@ requirements = python3,kivy,cython,llama-cpp-python [cite: 2]
 
 orientation = portrait [cite: 2]
 
-android.permissions = INTERNET [cite: 2]
+android.permissions = INTERNET, READ_EXTERNAL_STORAGE [cite: 2]
 android.api = 31 [cite: 2]
 android.minapi = 21 [cite: 2]
 android.ndk = 25b [cite: 2]
